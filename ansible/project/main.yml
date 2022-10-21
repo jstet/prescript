@@ -2,8 +2,8 @@
   gather_facts: yes
   become: no
   vars_files:
-    - vars/vault.yml
     - vars/settings.yml
+    - vars/vault.yml
 
   tasks:
     - block:
@@ -15,8 +15,38 @@
             - python3-pip
             - python-dev
             - python3-venv
-            - git           
+            - git   
+            - supervisor        
       become: yes
+
+    - name: configuring server for script execution
+      include_tasks: tasks/script.yml
+    
+    - name: configuring server for event listener
+      include_tasks: tasks/listener.yml
+    
+    - name: templating supervisor config to server
+      become: yes
+      template:
+        src: templates/script.conf
+        dest: /etc/supervisor/conf.d/script.conf
+        force: yes
+    
+    - name: tell Supervisor to look for new program configurations
+      become: yes
+      shell: |
+        supervisorctl reread
+
+    - name: telling Supervisor to enact changes
+      become: yes
+      shell: |
+        supervisorctl update
+
+    - name: starting script
+      become: yes
+      shell: |
+        supervisorctl start script
+
 
 
     

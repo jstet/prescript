@@ -2,6 +2,7 @@ ssh_key
 passwords
 .env
 ansible/artifacts/
+settings.yml
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

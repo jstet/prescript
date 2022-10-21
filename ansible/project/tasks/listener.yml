@@ -1,0 +1,31 @@
+- name: copy event listener folder to server
+  copy:
+    src: files/listener
+    dest: /home/{{  USER  }}
+    force: yes
+
+- name: template listener main.py to server
+  template:
+    src: templates/listener/main.py
+    dest: /home/{{  USER  }}/listener/main.py
+
+- name: template listeners scp_helper to server
+  template:
+    src: templates/listener/scp_helper.py
+    dest: /home/{{  USER  }}/listener/scp_helper.py
+
+- name: template listener email_helper to server
+  template:
+    src: templates/listener/email_helper.py
+    dest: /home/{{  USER  }}/listener/email_helper.py
+
+- name: Setting up environment
+  pip: 
+    requirements: /home/{{  USER  }}/listener/requirements.txt
+    virtualenv: /home/{{  USER  }}/listener/env
+    virtualenv_command: 'python3 -m venv'
+
+- name: creating folder for event listener log
+  file:
+    path: /home/{{  USER  }}/listener/log
+    state: directory

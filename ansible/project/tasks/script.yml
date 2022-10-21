@@ -1,0 +1,16 @@
+- name: copy script folder to server
+  copy:
+    src: files/script
+    dest: /home/{{  USER  }}
+    force: yes
+
+- name: Setting up environment
+  pip: 
+    requirements: /home/{{  USER  }}/script/requirements.txt
+    virtualenv: /home/{{  USER  }}/script/env
+    virtualenv_command: 'python3 -m venv'
+
+- name: creating folder for script log
+  file:
+    path: /home/{{  USER  }}/script/log
+    state: directory
