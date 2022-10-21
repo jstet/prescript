@@ -3,26 +3,28 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-hetzner_api_token=os.getenv("HETZNER_API_TOKEN")
-hetzner_box_user=os.getenv("HETZNER_BOX_USER")
-hetzner_box_pw=os.getenv("HETZNER_BOX_PW")
-vault_pw=os.getenv("ANSIBLE_VAULT_PW")
-smtp_address=os.getenv("SMTP_ADDRESS")
-smtp_pw=os.getenv("SMTP_PW")
+hetzner_api_token = os.getenv("HETZNER_API_TOKEN")
+hetzner_box_user = os.getenv("HETZNER_BOX_USER")
+hetzner_box_pw = os.getenv("HETZNER_BOX_PW")
+github_token = os.getenv("GITHUB_TOKEN")
+vault_pw = os.getenv("ANSIBLE_VAULT_PW")
+smtp_address = os.getenv("SMTP_ADDRESS")
+smtp_pw = os.getenv("SMTP_PW")
 # Name of Server in Hetzner Cloud
-hetzner_server_name="random-name"
+hetzner_server_name = "random-name"
 # https://docs.hetzner.com/cloud/servers/overview/
-hetzner_server_type="cx11"
+hetzner_server_type = "cx11"
 # https://docs.hetzner.com/robot/dedicated-server/operating-systems/standard-images/
-hetzner_image="ubuntu-20.04"
+hetzner_image = "ubuntu-20.04"
 # Server User
-user="user"
+user = "user"
 # Hostname of server
-hostname="test"
+hostname = "test"
 # Entrypoint of your script
-entrypoint="main.py"
+entrypoint = "main.py"
 # Directory your script writes output to
-output_dir="data"
-# To which mail reports should be sent to
-smtp_recipient="mail@jstet.net"
-smtp_host='mail.your-server.de'
+output_dir = "data"
+# mail address reports should be sent to
+smtp_recipient = "mail@jstet.net"
+# the address your smtp server can be reached on
+smtp_host = 'mail.your-server.de'
