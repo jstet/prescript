@@ -11,7 +11,7 @@ vault_pw = os.getenv("ANSIBLE_VAULT_PW")
 smtp_address = os.getenv("SMTP_ADDRESS")
 smtp_pw = os.getenv("SMTP_PW")
 # https://docs.hetzner.com/cloud/servers/overview/
-hetzner_server_type = "cx11"
+hetzner_server_type = "ccx11"
 # https://docs.hetzner.com/robot/dedicated-server/operating-systems/standard-images/
 hetzner_image = "ubuntu-20.04"
 # Directory of your storage box the output should be saved to. Note: Script will fail if it doesn't exist. Leave blank for root folder.

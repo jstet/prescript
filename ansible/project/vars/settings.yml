@@ -1,6 +1,6 @@
 USER: user
 ENTRYPOINT: main.py
-SERVER_ID: 24920328
+SERVER_ID: 24921741
 OUTPUT_DIR: python_scripts/data
 SMTP_RECIPIENT: mail@jstet.net
 SMTP_HOST: mail.your-server.de

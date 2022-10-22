@@ -67,7 +67,7 @@ console.print(f"Server IP is: {server_ip}")
 with console.status("Adding deploy key to Repo..", spinner="dots"):
     g = Github(settings.github_token)
     repo = g.get_repo(settings.github_repo)
-    repo.create_key(title="prescript_key", key=github_pubkey, read_only=True)
+    deploy_key = repo.create_key(title="prescript_key", key=github_pubkey, read_only=True)
 console.log("Added Public Key to Github Repo.")
 
 with console.status("Configuring Ansible...", spinner="dots"):
@@ -126,5 +126,8 @@ with console.status("Running Ansible Playbook...", spinner="dots"):
     r = ansible_runner.run(private_data_dir='ansible', playbook='main.yml')
 
 console.log("Ansible Playbook finished.")
+
+deploy_key.delete()
+
 console.print("All done.")
 console.print("Your script is now running on the server. Go outside and take a walk or smth...")

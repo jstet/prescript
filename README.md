@@ -1,8 +1,8 @@
-# Prescript (WIP)
+# Prescript 
 
-Skript zur automatischen Ausführung eines Skripts auf einem Server. Ideal for many API requests or ML model training.
+Script for automatic execution of a script on a server. Ideal for many API requests or ML model training.
 
-Prescript creates a server in the Hetzner Cloud with adjustable parameters. It then adds a deploy key to your srcipts repo, configures an Ansible environment and runs an Ansible playbook that first prepares the server by implementing the usual security measures, among other things. Then, the scripts repo is cloned (using the previously added deploy key) and executed using Supervisor. An event listener detects when the script has finished, sends the ouput to a Hetzner storage box and sends a notification email. Finally, the server is automatically deleted. 
+Prescript creates a server in the Hetzner Cloud with adjustable parameters. It then adds a deploy key to your scripts repo, configures an Ansible environment and runs an Ansible playbook that first prepares the server by implementing the usual security measures, among other things. Then, the scripts repo is cloned (using the previously added deploy key) and executed using Supervisor. An event listener detects when the script has finished, sends the ouput to a Hetzner storage box and sends a notification email. Finally, the server and the deploy key are deleted. 
 
 Executing this script takes some time. You need to evaluate whether it is worth running your script on a server using prescript. Running time also depends on the type of hetzner server you choose. I measured runtime (once) of 5 min 9 secs for CX11.
 
@@ -56,8 +56,8 @@ Executing this script takes some time. You need to evaluate whether it is worth 
 7. once script has finished, see [here](https://docs.hetzner.com/de/robot/storage-box/access/access-overview) for file retrieval options
 
 ## Script Requirements
-- Yor script directory has to contain a subdirectory where the script writes output to
-- Your script directory has to contain a requirements.txt
+- Yor scripts repo has to contain a subdirectory where the script writes output to
+- Your scripts directory has to contain a requirements.txt
 
 
 ## Misc
@@ -69,4 +69,6 @@ ssh -i ansible/env/ssh_key user@ip
 ```
 ### Logs
 Also find a log file in your storage box. Everything your script sends to stdout or stderr will be saved there. Personally I use rich to send stuff to stdout.
+
+
 

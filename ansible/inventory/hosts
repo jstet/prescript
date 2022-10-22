@@ -1,5 +1,5 @@
 [servers]
-server ansible_host=95.217.160.62
+server ansible_host=135.181.205.148
 [all:vars]
 ansible_user=user
 ansible_ssh_extra_args='-o userknownhostsfile=/dev/null'
