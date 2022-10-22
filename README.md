@@ -7,12 +7,12 @@ You need to evaluate whether it is worth using prescript, because it takes some 
 **Use this script at your own risk. Creating servers on Hetzner Cloud generates costs.**
 
 ## Requirements
-- A Github Repo with a script that has one entrypoint and outputs results to a folder
+- A Github repo with a script that has one entrypoint and outputs results to a folder
 - Ansible
-- Github Access Token
-- Hetzner Cloud Account
+- Github access token
+- Hetzner Cloud account
 - Hetzner Storage Box
-- SMTP Server
+- SMTP server
 
 ## Instructions
 
