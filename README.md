@@ -1,6 +1,6 @@
 # Prescript (WIP)
 
-Script to set up a server for remotely running some other script. Ideal for many API requests or ML model training.
+Skript zur automatischen Ausführung eines Skripts auf einem Server. Ideal for many API requests or ML model training.
 
 Prescript creates a server in the Hetzner Cloud with adjustable parameters. It then adds a deploy key to your srcipts repo, configures an Ansible environment and runs an Ansible playbook that first prepares the server by implementing the usual security measures, among other things. Then, the scripts repo is cloned (using the previously added deploy key) and executed using Supervisor. An event listener detects when the script has finished, sends the ouput to a Hetzner storage box and sends a notification email. Finally, the server is automatically deleted. 
 
