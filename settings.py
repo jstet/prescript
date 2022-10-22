@@ -10,8 +10,6 @@ github_token = os.getenv("GITHUB_TOKEN")
 vault_pw = os.getenv("ANSIBLE_VAULT_PW")
 smtp_address = os.getenv("SMTP_ADDRESS")
 smtp_pw = os.getenv("SMTP_PW")
-# Name of Server in Hetzner Cloud
-hetzner_server_name = "random-name"
 # https://docs.hetzner.com/cloud/servers/overview/
 hetzner_server_type = "cx11"
 # https://docs.hetzner.com/robot/dedicated-server/operating-systems/standard-images/
@@ -20,14 +18,14 @@ hetzner_image = "ubuntu-20.04"
 hetzner_box_dir = "prescript"
 # Server User
 user = "user"
-# Hostname of server
-hostname = "test"
-# Directory of your script. Relative to root folder. Leave blank if script is in root folder.
+# Hostname of server. Rules for  hostnames apply: https://en.wikipedia.org/wiki/Hostname
+hostname = "fds-download"
+# Directory of your script. This is where supervisor will cd too and execute the script in. Relative to root folder. Leave blank if script is in root folder.
 entrypoint_dir = "python_scripts"
 # entrypoint of your script. Relative to entrypoint folder
-entrypoint = "initial_data_gen.py"
+entrypoint = "main.py"
 # Directory your script writes output to. Relative to root folder
-output_dir = "data"
+output_dir = "python_scripts/data"
 # mail address reports should be sent to
 smtp_recipient = "mail@jstet.net"
 # the address your smtp server can be reached on

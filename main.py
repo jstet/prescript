@@ -53,7 +53,7 @@ users:
 with console.status("Creating Server..", spinner="dots"):
     client = Client(token=settings.hetzner_api_token)
     response1 = client.servers.create(
-        settings.hetzner_server_name,
+        settings.hostname,
         server_type=ServerType(name=settings.hetzner_server_type),
         image=Image(name=settings.hetzner_image),
         user_data=user_data
@@ -126,5 +126,5 @@ with console.status("Running Ansible Playbook...", spinner="dots"):
     r = ansible_runner.run(private_data_dir='ansible', playbook='main.yml')
 
 console.log("Ansible Playbook finished.")
-
-# client.servers.delete(server)
+console.print("All done.")
+console.print("Your script is now running on the server. Go outside and take a walk or smth...")

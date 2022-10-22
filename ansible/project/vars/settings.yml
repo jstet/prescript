@@ -1,7 +1,7 @@
 USER: user
-ENTRYPOINT: initial_data_gen.py
-SERVER_ID: 24917539
-OUTPUT_DIR: data
+ENTRYPOINT: main.py
+SERVER_ID: 24920328
+OUTPUT_DIR: python_scripts/data
 SMTP_RECIPIENT: mail@jstet.net
 SMTP_HOST: mail.your-server.de
 GITHUB_REPO: CorrelAid/kn_fds_statistics_database

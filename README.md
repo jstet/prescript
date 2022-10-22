@@ -4,6 +4,8 @@ Skript zur automatischen Ausführung eines Skripts auf einem Server. Ideal for m
 
 Prescript creates a server in the Hetzner Cloud with adjustable parameters. It then adds a deploy key to your srcipts repo, configures an Ansible environment and runs an Ansible playbook that first prepares the server by implementing the usual security measures, among other things. Then, the scripts repo is cloned (using the previously added deploy key) and executed using Supervisor. An event listener detects when the script has finished, sends the ouput to a Hetzner storage box and sends a notification email. Finally, the server is automatically deleted. 
 
+Executing this script takes some time. You need to evaluate whether it is worth running your script on a server using prescript. Running time also depends on the type of hetzner server you choose. I measured runtime (once) of 5 min 9 secs for CX11.
+
 **Use this script at your own risk. Creating servers on Hetzner Cloud generates costs.**
 
 ## Requirements
@@ -66,5 +68,5 @@ To connect to the server created by prescript, you have to use the generated pri
 ssh -i ansible/env/ssh_key user@ip
 ```
 ### Logs
-Also find a log file in your storage box.
+Also find a log file in your storage box. Everything your script sends to stdout or stderr will be saved there. Personally I use rich to send stuff to stdout.
 
