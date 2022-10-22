@@ -16,13 +16,13 @@ hetzner_server_name = "random-name"
 hetzner_server_type = "cx11"
 # https://docs.hetzner.com/robot/dedicated-server/operating-systems/standard-images/
 hetzner_image = "ubuntu-20.04"
-# Directory of your storage box the output should be saved to
+# Directory of your storage box the output should be saved to. Note: Script will fail if it doesn't exist. Leave blank for root folder.
 hetzner_box_dir = "prescript"
 # Server User
 user = "user"
 # Hostname of server
 hostname = "test"
-# Directory of your script. Relative to root folder
+# Directory of your script. Relative to root folder. Leave blank if script is in root folder.
 entrypoint_dir = "python_scripts"
 # entrypoint of your script. Relative to entrypoint folder
 entrypoint = "initial_data_gen.py"

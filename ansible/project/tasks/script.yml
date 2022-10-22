@@ -4,10 +4,11 @@
     dest: .ssh/github_ssh_key
     mode: 00600
 
-- name: Recursively remove directory
+- name: Recursively remove directory in case script dir already exists
   ansible.builtin.file:
     path: /home/{{  USER  }}/script
     state: absent
+  become: yes
 
 - name: Clone script repo
   shell: |
@@ -15,7 +16,7 @@
 
 - name: Creating log dir
   ansible.builtin.file:
-    path: /home/{{  USER  }}/script/{{ OUTPUT_DIR  }}/log
+    path: /home/{{  USER  }}/script/{{ OUTPUT_DIR  }}/supervisor_log
     state: directory
     mode: '0755'
    

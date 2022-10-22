@@ -4,7 +4,7 @@ passwords
 ansible/artifacts/
 settings.yml
 github_ssh_key
-
+.vscode
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
