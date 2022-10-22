@@ -2,13 +2,14 @@
 
 Script to set up a server for remotely running some other script. Ideal for many API requests or ML model training.
 
-Prescript creates a server in the Hetzner Cloud with adjustable parameters. It then configures an Ansible environment and runs an Ansible playbook that first prepares the server by implementing the usual security measures, among other things. Then, the desired script is cloned and executed using Supervisor. An event listener detects when the script has finished, sends the ouput to a Hetzner storage box and sends a notification email. Finally, the server is automatically deleted. 
+Prescript creates a server in the Hetzner Cloud with adjustable parameters. It then adds a deploy key to your srcipts repo, configures an Ansible environment and runs an Ansible playbook that first prepares the server by implementing the usual security measures, among other things. Then, the scripts repo is cloned (using the previously added deploy key) and executed using Supervisor. An event listener detects when the script has finished, sends the ouput to a Hetzner storage box and sends a notification email. Finally, the server is automatically deleted. 
 
-Use this script at your own risk. Creating servers on Hetzner Cloud costs money.
+**Use this script at your own risk. Creating servers on Hetzner Cloud generates costs.**
 
 ## Requirements
 - A script that has one entrypoint and outputs results to a folder
 - Ansible
+- Github Access Token
 - Hetzner Cloud Account
 - Hetzner Storage Box
 - SMTP Server
@@ -49,12 +50,13 @@ Use this script at your own risk. Creating servers on Hetzner Cloud costs money.
     ``` 
     The login data for your SMTP server.
 6. Adjust settings. See settings.py for info.
-7. Make sure your server doesnt block default smtp port. [Hetzner does this by default](https://docs.hetzner.com/de/cloud/servers/faq/#warum-kann-ich-keine-mails-von-meinem-server-verschicken). With Hetzner Mail you can also use port 587 and starttls. Edit email_helper.py if this doesnt work for your smtp provider.
+7. Hetzner blocks default smtp port. [Hetzner does this by default](https://docs.hetzner.com/de/cloud/servers/faq/#warum-kann-ich-keine-mails-von-meinem-server-verschicken). With Hetzner Mail you can also use port 587 and starttls so thats what I'm doing. Edit email_helper.py if this doesnt work for your smtp provider.
 7. once script has finished, see [here](https://docs.hetzner.com/de/robot/storage-box/access/access-overview) for file retrieval options
 
 ## Script Requirements
 - Yor script directory has to contain a subdirectory where the script writes output to
 - Your script directory has to contain a requirements.txt
+
 
 ## Misc
 ### Connect to Server
@@ -63,5 +65,6 @@ To connect to the server created by prescript, you have to use the generated pri
 ```
 ssh -i ansible/env/ssh_key user@ip
 ```
-
+### Logs
+Also find a log file in your storage box.
 

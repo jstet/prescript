@@ -3,6 +3,7 @@ passwords
 .env
 ansible/artifacts/
 settings.yml
+github_ssh_key
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

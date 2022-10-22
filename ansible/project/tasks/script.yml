@@ -1,16 +1,28 @@
-- name: copy script folder to server
-  copy:
-    src: files/script
-    dest: /home/{{  USER  }}
-    force: yes
+- name: copy ssh_key to server
+  copy: 
+    src: files/github_ssh_key 
+    dest: .ssh/github_ssh_key
+    mode: 00600
+
+- name: Recursively remove directory
+  ansible.builtin.file:
+    path: /home/{{  USER  }}/script
+    state: absent
+
+- name: Clone script repo
+  shell: |
+    git -c core.sshCommand='ssh -i .ssh/github_ssh_key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' clone git@github.com:{{ GITHUB_REPO }}.git /home/{{  USER  }}/script
+
+- name: Creating log dir
+  ansible.builtin.file:
+    path: /home/{{  USER  }}/script/{{ OUTPUT_DIR  }}/log
+    state: directory
+    mode: '0755'
+   
 
 - name: Setting up environment
   pip: 
-    requirements: /home/{{  USER  }}/script/requirements.txt
+    requirements: /home/{{  USER  }}/script/{{  ENTRYPOINT_DIR  }}/requirements.txt
     virtualenv: /home/{{  USER  }}/script/env
     virtualenv_command: 'python3 -m venv'
 
-- name: creating folder for script log
-  file:
-    path: /home/{{  USER  }}/script/log
-    state: directory

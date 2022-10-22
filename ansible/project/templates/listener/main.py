@@ -25,15 +25,23 @@ def main():
         write_stderr(line)
 
         # read event payload and print it to stderr
-        headers = dict([ x.split(':') for x in line.split() ])
+        headers = dict([x.split(':') for x in line.split()])
         data = sys.stdin.read(int(headers['len']))
-        write_stderr(data)
+        write_stderr(data)   
         if headers["eventname"] == "PROCESS_STATE_EXITED":
-            send_file()
-            send_email(True, str(headers))
-            client = Client(token="{{  HETZNER_API_TOKEN  }}")
-            server = client.servers.get_by_id("{{  SERVER_ID  }}")
-            client.servers.delete(server)
+            data_dict = dict([x.split(":") for x in str.split()])
+            exp = int(data_dict["expected"])
+            if exp == 0:
+                send_file()
+                send_email(True)
+                client = Client(token="{{  HETZNER_API_TOKEN  }}")
+                server = client.servers.get_by_id("{{  SERVER_ID  }}")
+                # client.servers.delete(server)
+            if exp == 1:
+                send_file()
+                send_email(False)
+            
+        
         # transition from READY to ACKNOWLEDGED
         write_stdout('RESULT 2\nOK')
 
