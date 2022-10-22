@@ -1,6 +1,4 @@
-# Prescript 
-
-### Prescript automates the creation and preparation of a server to then also automatically run a Python script on it. Ideal for many API requests or ML model training.
+### Prescript automates the creation and preparation of a server, then automatically runs a Python script on it. Ideal for many API requests or ML model training.
 
 Prescript creates a server in the Hetzner Cloud with adjustable parameters. It then adds a deploy key to your scripts repo, configures an Ansible environment and runs an Ansible playbook that first prepares the server by implementing the usual security measures, among other things. Then, the scripts repo is cloned (using the previously added deploy key) and executed using Supervisor. An event listener detects when the script has finished, sends the ouput to a Hetzner storage box and sends a notification email. Finally, the server and the deploy key are deleted. 
 
