@@ -37,12 +37,12 @@ def main():
                     if exp == 1:
                         send_file()
                         send_email(0)
-                        client = Client(token="{{  HETZNER_API_TOKEN  }}")
-                        server = client.servers.get_by_id("{{  SERVER_ID  }}")
-                        client.servers.delete(server)
                     else:
                         send_file()
                         send_email(1)
+                    client = Client(token="{{  HETZNER_API_TOKEN  }}")
+                    server = client.servers.get_by_id("{{  SERVER_ID  }}")
+                    client.servers.delete(server)
             except Exception as e:
                 write_stderr(str(e))
                 send_email(3)
