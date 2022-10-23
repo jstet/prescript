@@ -51,7 +51,11 @@ You need to evaluate whether it is worth using prescript, because it takes some 
     The login data for your SMTP server.
 6. Adjust settings. See settings.py for info.
 7. Hetzner blocks default smtp port. [Hetzner does this by default](https://docs.hetzner.com/de/cloud/servers/faq/#warum-kann-ich-keine-mails-von-meinem-server-verschicken). With Hetzner Mail you can also use port 587 and starttls so thats what I'm doing. Edit email_helper.py if this doesnt work for your smtp provider.
-7. once script has finished, see [here](https://docs.hetzner.com/de/robot/storage-box/access/access-overview) for file retrieval options
+8. Run script.
+    ```
+    python main.py
+    ```
+9. once script has finished, see [here](https://docs.hetzner.com/de/robot/storage-box/access/access-overview) for file retrieval options
 
 ## Script Requirements
 - Yor scripts repo has to contain a subdirectory where the script writes output to
