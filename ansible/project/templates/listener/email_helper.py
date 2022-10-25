@@ -43,7 +43,7 @@ def send_email(success):
             <body>
                 <h2>An error occured during the execution of your script!</h2>
                 <p>Find output (if there is any) in your storage box.</p>
-                <p>The server has <strong>not</strong> been deleted.</p>
+                <p>The server has been deleted.</p>
                 <br>
                 {footer}
             </body>
