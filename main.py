@@ -116,9 +116,26 @@ SMTP_ADDRESS: {settings.smtp_address}\nSMTP_PW: {settings.smtp_pw}"
 
 console.log("Ansible configured.")
 
-secs = 35
-for i in track(range(secs), description=f"Waiting {secs} seconds for the server to be reachable..."):
-    time.sleep(1)
+
+with console.status("Waiting for the server to be reachable...", spinner="dots"):
+    success = False
+    for i in range(5):
+        time.sleep(10)
+        hostname = server_ip #example
+        response = os.system("ping -c 1 " + hostname + " >/dev/null 2>&1")
+        #and then check the response...
+        if response == 0:
+            time.sleep(10)
+            success = True
+            break
+        else:
+            console.log(f"Trying to connect again. Try {i+1} out of 5")
+    if not success:
+        console.print("Couldn't connect to server. Might be a Hetzner problem.")
+        client.servers.delete(server)
+        console.log("Deleted server.")
+        exit()
+
 
 console.log("Server should be reachable.")
 
