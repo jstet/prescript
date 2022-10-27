@@ -14,7 +14,7 @@ def send_file():
                 look_for_keys=False)
     # SCPCLient takes a paramiko transport as its only argument
     scp = SCPClient(ssh.get_transport())
-    now = datetime.datetime.now().strftime("%s_%d_%m_%Y")
+    now = datetime.datetime.now().strftime("%H_%S_%d_%m_%Y")
     scp.put("home/{{  USER  }}/script/{{  OUTPUT_DIR  }}",
             f"{{ HETZNER_BOX_DIR  }}/prescript_output_{now}", recursive=True)
     scp.close()

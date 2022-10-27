@@ -21,7 +21,7 @@ def send_email(success):
     msg = EmailMessage()
     msg['From'] = address
     msg['To'] = recipient
-    if success == 0:
+    if success == 1:
         msg['Subject'] = "Prescript - Your script report"
         msg.set_content(f"""
         <!DOCTYPE html>
@@ -35,7 +35,7 @@ def send_email(success):
             </body>
         </html>
         """, subtype='html')
-    elif success == 1:
+    elif success == 0:
         msg['Subject'] = "Prescript - Your script failed!"
         msg.set_content(f"""
         <!DOCTYPE html>
@@ -43,7 +43,7 @@ def send_email(success):
             <body>
                 <h2>An error occured during the execution of your script!</h2>
                 <p>Find output (if there is any) in your storage box.</p>
-                <p>The server has been deleted.</p>
+                <p>The server has <strong>not</strong> been deleted.</p>
                 <br>
                 {footer}
             </body>

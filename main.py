@@ -121,7 +121,7 @@ with console.status("Waiting for the server to be reachable...", spinner="dots")
     success = False
     for i in range(5):
         time.sleep(10)
-        hostname = server_ip #example
+        hostname = server_ip
         response = os.system("ping -c 1 " + hostname + " >/dev/null 2>&1")
         #and then check the response...
         if response == 0:
@@ -129,7 +129,7 @@ with console.status("Waiting for the server to be reachable...", spinner="dots")
             success = True
             break
         else:
-            console.log(f"Trying to connect again. Try {i+1} out of 5")
+            console.log(f"Trying to connect. Try {i+1} out of 5")
     if not success:
         console.print("Couldn't connect to server. Might be a Hetzner problem.")
         client.servers.delete(server)
@@ -142,9 +142,10 @@ console.log("Server should be reachable.")
 with console.status("Running Ansible Playbook...", spinner="dots"):
     r = ansible_runner.run(private_data_dir='ansible', playbook='main.yml')
 
-console.log("Ansible Playbook finished.")
-
-deploy_key.delete()
-
-console.print("All done.")
-console.print("Your script is now running on the server. Go outside and take a walk or smth...")
+if r.status == "failed":
+    console.log("Ansible Playbook failed. See the error above. Server was not deleted.")
+else:
+    console.log("Ansible Playbook finished.")
+    deploy_key.delete()
+    console.print("All done.")
+    console.print("Your script is now running on the server. Go outside and take a walk or smth...")

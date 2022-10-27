@@ -13,7 +13,7 @@ smtp_pw = os.getenv("SMTP_PW")
 # https://docs.hetzner.com/cloud/servers/overview/
 hetzner_server_type = "ccx11"
 # https://docs.hetzner.com/robot/dedicated-server/operating-systems/standard-images/
-hetzner_image = "ubuntu-20.04"
+hetzner_image = "debian-11"
 # Directory of your storage box the output should be saved to. Note: Script will fail if it doesn't exist. Leave blank for root folder.
 hetzner_box_dir = "prescript"
 # Server User
