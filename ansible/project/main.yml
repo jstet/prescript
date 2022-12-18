@@ -17,6 +17,7 @@
             - python3-venv  
             - supervisor  
             - git      
+            - chromium
       become: yes
 
     - name: configuring server for script execution

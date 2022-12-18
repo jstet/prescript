@@ -22,8 +22,10 @@
    
 
 - name: Setting up environment
-  pip: 
-    requirements: /home/{{  USER  }}/script/{{  ENTRYPOINT_DIR  }}/requirements.txt
-    virtualenv: /home/{{  USER  }}/script/env
-    virtualenv_command: 'python3 -m venv'
+  shell: | 
+    cd /home/{{  USER  }}/script
+    python3 -m venv env
+    source env/bin/activate
+    python3 -m pip install -r requirements.txt
+
 
