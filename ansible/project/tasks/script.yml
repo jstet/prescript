@@ -8,7 +8,7 @@
   ansible.builtin.file:
     path: /home/{{  USER  }}/script
     state: absent
-  become: yes
+  become: true
 
 - name: Clone script repo
   shell: |
@@ -19,13 +19,18 @@
     path: /home/{{  USER  }}/script/{{ OUTPUT_DIR  }}/supervisor_log
     state: directory
     mode: '0755'
-   
 
 - name: Setting up environment
-  shell: | 
-    cd /home/{{  USER  }}/script
-    python3 -m venv env
-    source env/bin/activate
-    python3 -m pip install -r requirements.txt
+  pip: 
+    requirements: /home/{{  USER  }}/script/requirements.txt
+    virtualenv: /home/{{  USER  }}/script/env
+    virtualenv_command: python3 -m venv
+
+# - name: Setting up environment
+#   shell: | 
+#     cd /home/{{  USER  }}/script
+#     python3 -m venv env
+#     source env/bin/activate
+#     python3 -m pip install -r requirements.txt
 
 

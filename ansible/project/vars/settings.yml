@@ -1,6 +1,6 @@
 USER: user
 ENTRYPOINT: scrape_report_data.py
-SERVER_ID: 26638076
+SERVER_ID: 27039882
 OUTPUT_DIR: output
 SMTP_RECIPIENT: mail@jstet.net
 SMTP_HOST: mail.your-server.de
