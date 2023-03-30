@@ -22,7 +22,7 @@
 
 - name: Setting up environment
   pip: 
-    requirements: /home/{{  USER  }}/script/requirements.txt
+    requirements: "/home/{{  USER  }}/script/{{ ENTRYPOINT_DIR }}/requirements.txt"
     virtualenv: /home/{{  USER  }}/script/env
     virtualenv_command: python3 -m venv
 

@@ -65,6 +65,7 @@ console.log("Server created.")
 console.print(f"Server IP is: {server_ip}")
 
 with console.status("Adding deploy key to Repo..", spinner="dots"):
+    
     g = Github(settings.github_token)
     repo = g.get_repo(settings.github_repo)
     deploy_key = repo.create_key(title="prescript_key", key=github_pubkey, read_only=True)

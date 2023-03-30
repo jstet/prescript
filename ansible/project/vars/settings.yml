@@ -1,9 +1,9 @@
 USER: user
-ENTRYPOINT: scrape_report_data.py
-SERVER_ID: 27039882
-OUTPUT_DIR: output
+ENTRYPOINT: main.py
+SERVER_ID: 30621178
+OUTPUT_DIR: db/python_scripts/data
 SMTP_RECIPIENT: mail@jstet.net
 SMTP_HOST: mail.your-server.de
-GITHUB_REPO: jstet/Basel_Convention_Scraper
-ENTRYPOINT_DIR: scraper
+GITHUB_REPO: CorrelAid/fds_dashboard
+ENTRYPOINT_DIR: db/python_scripts
 HETZNER_BOX_DIR: prescript

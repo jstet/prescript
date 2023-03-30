@@ -19,16 +19,16 @@ hetzner_box_dir = "prescript"
 # Server User
 user = "user"
 # Hostname of server. Rules for  hostnames apply: https://en.wikipedia.org/wiki/Hostname
-hostname = "gis-download"
+hostname = "fds-download"
 # Directory of your script. This is where supervisor will cd too and execute the script in. Relative to root folder. Leave blank if script is in root folder.
-entrypoint_dir = "scraper"
+entrypoint_dir = "db/python_scripts"
 # entrypoint of your script. Relative to entrypoint folder
-entrypoint = "scrape_report_data.py"
+entrypoint = "main.py"
 # Directory your script writes output to. Relative to root folder
-output_dir = "output"
+output_dir = "db/python_scripts/data"
 # mail address reports should be sent to
 smtp_recipient = "mail@jstet.net"
 # the address your smtp server can be reached on
 smtp_host = 'mail.your-server.de'
 # The repo that contains the script
-github_repo = "jstet/Basel_Convention_Scraper"
+github_repo = "CorrelAid/fds_dashboard"
